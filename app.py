@@ -4,7 +4,15 @@ import spacy
 import re
 from skills import SKILL_CATEGORIES
 
-nlp = spacy.load("en_core_web_sm")
+import spacy
+import os
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except:
+    from spacy.cli import download
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 st.set_page_config(page_title="AI Resume Analyzer Pro", layout="wide")
 st.title("🚀 AI Resume Analyzer Pro")
